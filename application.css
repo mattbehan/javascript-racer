@@ -58,8 +58,7 @@ td {
 }
 
 button {
-  border: none;
-  display: none;
+  visibility: hidden;
   width: 100px;
   height: 50px;
   border-radius: 5px;
@@ -74,4 +73,33 @@ button {
 
 #winner {
   display: none;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  opacity: .4;
+  position: absolute;
+  top: 0 ;
+  left: 0;
+  background-color: black;
+  z-index: 1;
+}
+
+#instructions {
+  z-index: 2;
+  visibility: visible;
+}
+
+ul {
+  z-index: 2;
+}
+
+li {
+  color: red;
+}
+
+button#start {
+  z-index: 2;
+  visibility: visible;
 }

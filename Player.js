@@ -1,22 +1,24 @@
 function Player(i) {
 
+  var self = this;
+
   function getKey(i) {
     switch(i){
       case 1:
+        self.keystroke = "Shift"
         return 16
-        break;
       case 2:
+        self.keystroke = "Left Arrow"
         return 37
-        break;
       case 3:
+        self.keystroke = "Spacebar"
         return 32
-        break;
       case 4:
+        self.keystroke = "Backspace"
         return 8
-        break;
       case 5:
+        self.keystroke = "Escape"
         return 27
-        break;
     }
   }
 
@@ -26,7 +28,7 @@ function Player(i) {
       return name;
     }
     else {
-      getName;
+      return getName();
     }
   }
 
@@ -38,9 +40,3 @@ function Player(i) {
 Player.prototype.advance = function() {
   this.position += 1;
 }
-
-// left arrow: 37
-// spacebar: 32
-//              shift: 16
-// backspace: 8
-// escape:27

@@ -21,7 +21,7 @@ Game.prototype.getNumberOfPlayers = function() {
   }
   else{
     alert("Please enter a number from 2-5.");
-    Game.prototype.getNumberOfPlayers();
+    return this.getNumberOfPlayers();
   }
 }
 
@@ -34,20 +34,22 @@ Game.prototype.initializePlayers = function(numPlayers) {
   }
 }
 
+Game.prototype.checkForValidRowlength = function(input) {
+  return (input % 1 === 0 && input >= 10  && input <= 22);
+}
+
 Game.prototype.getRowLength = function() {
-  length = prompt("Please enter the length of the race, (anywhere from 10-22)");
+  var length = prompt("Please enter the length of the race, (anywhere from 10-22)");
   if (this.checkForValidRowlength(length) ){
     return length;
   }
   else {
-    prompt("Please enter a number from 10-22.");
-    this.getRowLength();
+    alert("Please enter a number from 10-22.");
+    return this.getRowLength();
   }
 }
 
-Game.prototype.checkForValidRowlength = function(input) {
-  return (input % 1 === 0 && input >= 10  && input <= 22);
-}
+
 
 
 Game.prototype.new_game = function() {
@@ -70,37 +72,22 @@ Game.prototype.getUnicode = function(key) {
   return key.keyCode
 }
 
-Game.prototype.render = function() {
-  for (i = 1; i <= this.players.length; i++){
-    var target_cell = this.row_length - this.players[i-1].position
-    var player = $("#player" + i)
-    $("#player"+i).children().removeClass("player-" + i + "-active");
-    $("#player"+i).children("#data"+target_cell).addClass("player-" + i + "-active")
-  }
-}
+// left this out of the view because we would have to send it the array of players, which I felt was passing too much information
+
 
 Game.prototype.checkForWinner = function() {
   for(var i = 0; i < this.players.length; i++){
     if(this.players[i].position === this.row_length - 1 ) {
       this.wonBy = this.players[i];
-      this.displayWinnerAndReplay();
+      return true;
     }
   }
 }
 
-Game.prototype.displayWinnerAndReplay = function() {
-  $("button").show()
-  var winner = this.wonBy;
-  $("#winner-info").text("Congratulations " + winner.name + ", you win!")
-  $("#winner").show()
-}
 
-Game.prototype.reset = function() {
+Game.prototype.resetPositionsAndWinner = function() {
   this.wonBy = false;
   for( i = 1; i <= this.players.length; i++) {
     this.players[i-1].position = 0;
   }
-  $("#winner-info").text("")
-  $("#winner").hide();
-  $("button").hide();
 }
