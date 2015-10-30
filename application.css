@@ -103,3 +103,7 @@ button#start {
   z-index: 2;
   visibility: visible;
 }
+
+button#replay {
+  visibility: hidden;
+}

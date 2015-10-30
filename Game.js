@@ -4,6 +4,7 @@ var Game = function() {
   this.wonBy = false;
   this.row_length = 0;
   this.numberOfPlayers = 0;
+  this.started = false;
 
   this.new_game();
 }
@@ -56,6 +57,10 @@ Game.prototype.new_game = function() {
    this.numberOfPlayers = this.getNumberOfPlayers() ;
    this.initializePlayers(this.numberOfPlayers);
    this.row_length = this.getRowLength();
+}
+
+Game.prototype.start = function() {
+  this.started = true;
 }
 
 

@@ -3,7 +3,7 @@ var View = function() {
 };
 
 View.prototype.displayWinnerAndReplay = function(winner) {
-  $("#replay").css("");
+  $("#replay").css("visibility", "visible");
   $("#winner-info").text("Congratulations " + winner.name + ", you win!");
   $("#winner").show();
 };
@@ -73,4 +73,8 @@ View.prototype.startGame = function() {
   $(".overlay").remove();
 
   $("#start").css("visibility", "hidden");
+}
+
+View.prototype.hideReplay = function() {
+  $("#replay").css("visibility", "hidden")
 }
